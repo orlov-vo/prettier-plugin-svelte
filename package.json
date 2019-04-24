@@ -23,21 +23,22 @@
         "url": "https://github.com/UnwrittenFun/prettier-plugin-svelte/issues"
     },
     "homepage": "https://github.com/UnwrittenFun/prettier-plugin-svelte#readme",
-    "dependencies": {
-        "prettier": "^1.16.1",
-        "svelte": "^2.0.0 || ^3.0.0-alpha",
-        "tslib": "^1.9.3"
+    "peerDependencies": {
+        "prettier": "^1.17.0",
+        "svelte": "^3.0.0"
     },
     "devDependencies": {
-        "@types/node": "^10.12.18",
-        "@types/prettier": "^1.15.2",
-        "ava": "1.2.0",
-        "rollup": "1.1.2",
-        "rollup-plugin-commonjs": "9.2.0",
-        "rollup-plugin-node-resolve": "4.0.0",
-        "rollup-plugin-typescript": "1.0.0",
-        "test-svelte3": "npm:svelte@3.0.0-alpha27",
-        "ts-node": "^7.0.1",
-        "typescript": "3.2.4"
+        "@types/node": "^11.13.7",
+        "@types/prettier": "^1.16.3",
+        "ava": "1.4.1",
+        "prettier": "^1.17.0",
+        "rollup": "1.10.1",
+        "rollup-plugin-commonjs": "9.3.4",
+        "rollup-plugin-node-resolve": "4.2.3",
+        "rollup-plugin-typescript": "1.0.1",
+        "svelte": "^3.0.0",
+        "ts-node": "^8.1.0",
+        "tslib": "^1.9.3",
+        "typescript": "3.4.5"
     }
 }

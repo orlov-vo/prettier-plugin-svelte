@@ -47,7 +47,7 @@ export const printers: Record<string, Printer> = {
 export const options: Record<string, SupportOption> = {
     sveltePath: {
         type: 'path',
-        description: 'Path to custom Svelte version to use',
-        default: 'svelte',
+        description: 'Path to custom Svelte compiler version to use',
+        default: 'svelte/compiler',
     },
 };

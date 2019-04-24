@@ -1,5 +1,5 @@
 export function importSvelte(importPath: string) {
-    const svelte = require(`${importPath}/compiler`);
+    const svelte = require(importPath);
 
     return {
         parse(text: string) {

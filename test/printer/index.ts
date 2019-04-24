@@ -1,7 +1,6 @@
 import test, { ExecutionContext } from 'ava';
 import { readdirSync, readFileSync } from 'fs';
 import { format } from 'prettier';
-import { resolve } from 'path';
 
 const commonTests = readdirSync('test/printer/samples').filter(name => name.endsWith('.html'));
 const v3Tests = readdirSync('test/printer/samples/v3').filter(name => name.endsWith('.html'));
@@ -24,7 +23,7 @@ function testV3(input: string, t: ExecutionContext<any>) {
         parser: 'svelte' as any,
         plugins: [require.resolve('../../src')],
         tabWidth: 4,
-        sveltePath: resolve(__dirname, '../../node_modules/test-svelte3'),
+        sveltePath: require.resolve('svelte/compiler'),
     } as any);
     t.is(input, actualOutput);
 }
