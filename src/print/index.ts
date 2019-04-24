@@ -169,7 +169,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                 printJS(path, print, 'expression'),
                 '}',
                 indent(printChildren(path, print)),
-                line,
+                hardline,
             ];
 
             if (node.else) {
