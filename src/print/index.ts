@@ -3,8 +3,7 @@ import { Node, MustacheTagNode, IfBlockNode } from './nodes';
 import { isASTNode } from './helpers';
 import { extractAttributes } from '../lib/extractAttributes';
 import { getText } from '../lib/getText';
-import { isBindingNodeV2 } from '../lib/nodeFuncs';
-import { getSvelteVersion } from '../lib/getSvelteVersion';
+
 const { concat, join, line, group, indent, softline, hardline } = doc.builders;
 
 export type PrintFn = (path: FastPath) => Doc;
@@ -39,11 +38,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
         return group(join(hardline, parts));
     }
 
-    const version = getSvelteVersion((options as any).sveltePath);
-    let [open, close] = ['{', '}'];
-    if (version.major < 3) {
-        [open, close] = ['"', '"'];
-    }
+    const [open, close] = ['{', '}'];
 
     const node = n as Node;
     switch (node.type) {
@@ -242,17 +237,6 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                     : '',
             ]);
         case 'Binding':
-            if (isBindingNodeV2(node)) {
-                return concat([
-                    line,
-                    'bind:',
-                    node.name,
-                    node.value.type === 'Identifier' && node.value.name === node.name
-                        ? ''
-                        : concat(['=', open, printJS(path, print, 'value'), close]),
-                ]);
-            }
-
             return concat([
                 line,
                 'bind:',
