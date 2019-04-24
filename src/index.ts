@@ -17,6 +17,7 @@ export const languages: Partial<SupportLanguage>[] = [
         name: 'svelte',
         parsers: ['svelte'],
         extensions: ['.svelte', '.html'],
+        vscodeLanguageIds: ['html'],
     },
 ];
 
