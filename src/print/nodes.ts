@@ -43,6 +43,13 @@ export interface AttributeShorthandNode extends BaseNode {
     expression: Node;
 }
 
+export interface ClassNode extends BaseNode {
+    type: 'Class';
+    name: string;
+    modifiers: string[];
+    expression?: Node;
+}
+
 export interface IfBlockNode extends BaseNode {
     type: 'IfBlock';
     expression: Node;
@@ -226,6 +233,7 @@ export type Node =
     | AttributeNode
     | IdentifierNode
     | AttributeShorthandNode
+    | ClassNode
     | IfBlockNode
     | ElseBlockNode
     | EachBlockNode

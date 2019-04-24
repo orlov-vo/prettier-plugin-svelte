@@ -147,6 +147,20 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
             }
             return concat(def);
         }
+        case 'Class':
+            const def: Doc[] = [line, 'class:', node.name];
+
+            const isAttributeShorthand =
+                node.expression &&
+                node.expression.type === 'Identifier' &&
+                node.expression.name === node.name;
+
+            if (!isAttributeShorthand) {
+                def.push('="{');
+                def.push(printJS(path, print, 'expression'));
+                def.push('}"');
+            }
+            return concat(def);
         case 'MustacheTag':
             return concat(['{', printJS(path, print, 'expression'), '}']);
         case 'IfBlock': {
