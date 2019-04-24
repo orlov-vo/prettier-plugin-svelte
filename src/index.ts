@@ -28,7 +28,7 @@ export const parsers: Record<string, Parser> = {
         },
         preprocess(text) {
             text = snipTagContent('style', text);
-            text = snipTagContent('script', text, '{}');
+            text = snipTagContent('script', text, true);
             return text;
         },
         locStart,
