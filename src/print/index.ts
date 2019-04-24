@@ -185,7 +185,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
             if (node.children.length === 1 && node.children[0].type === 'IfBlock') {
                 const ifNode = node.children[0] as IfBlockNode;
                 const def: Doc[] = [
-                    '{:elseif ',
+                    '{:else if ',
                     path.map(ifPath => printJS(path, print, 'expression'), 'children')[0],
                     '}',
                     indent(path.map(ifPath => printChildren(ifPath, print), 'children')[0]),
