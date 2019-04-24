@@ -6,6 +6,24 @@ import { getText } from '../lib/getText';
 
 const { concat, join, line, group, indent, softline, hardline } = doc.builders;
 
+// @see http://xahlee.info/js/html5_non-closing_tag.html
+const SELF_CLOSING_TAGS = [
+    'area',
+    'base',
+    'br',
+    'col',
+    'embed',
+    'hr',
+    'img',
+    'input',
+    'link',
+    'meta',
+    'param',
+    'source',
+    'track',
+    'wbr',
+];
+
 export type PrintFn = (path: FastPath) => Doc;
 
 export function print(path: FastPath, options: ParserOptions, print: PrintFn): Doc {
@@ -85,6 +103,10 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
         case 'Window':
         case 'Head':
         case 'Title':
+            const isVoidElement =
+                !node.children.length &&
+                (node.type !== 'Element' || SELF_CLOSING_TAGS.includes(node.name));
+
             return group(
                 concat([
                     '<',
@@ -106,11 +128,11 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                         ),
                     ),
 
-                    node.children.length ? '>' : ' />',
+                    isVoidElement ? ' />' : '>',
 
                     indent(printChildren(path, print)),
 
-                    node.children.length ? concat([softline, '</', node.name, '>']) : '',
+                    isVoidElement ? '' : concat([softline, '</', node.name, '>']),
                 ]),
             );
         case 'Identifier':
