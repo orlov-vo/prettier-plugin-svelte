@@ -3,7 +3,6 @@ import { Node, MustacheTagNode, IfBlockNode } from './nodes';
 import { isASTNode } from './helpers';
 import { extractAttributes } from '../lib/extractAttributes';
 import { getText } from '../lib/getText';
-
 const { concat, join, line, group, indent, softline, hardline } = doc.builders;
 
 // @see http://xahlee.info/js/html5_non-closing_tag.html
@@ -62,7 +61,6 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
     }
 
     const [open, close] = ['{', '}'];
-
     const node = n as Node;
     switch (node.type) {
         case 'Fragment':
