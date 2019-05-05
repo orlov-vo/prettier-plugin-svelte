@@ -23,7 +23,7 @@ export const languages: Partial<SupportLanguage>[] = [
 export const parsers: Record<string, Parser> = {
     svelte: {
         parse: text => {
-            return require(`svelte/compiler`).parse(text);
+            return require('svelte/compiler').compile(text, { generate: false }).ast;
         },
         preprocess: text => {
             text = snipTagContent('style', text);
