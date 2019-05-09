@@ -109,6 +109,12 @@ export interface BindingNode extends BaseNode {
     expression: Node;
 }
 
+export interface LetNode extends BaseNode {
+    type: 'Let';
+    name: string;
+    expression: Node;
+}
+
 export interface DebugTagNode extends BaseNode {
     type: 'DebugTag';
     identifiers: Node[];
@@ -243,6 +249,7 @@ export type Node =
     | CatchBlockNode
     | EventHandlerNode
     | BindingNode
+    | LetNode
     | DebugTagNode
     | RefNode
     | InlineComponentNode

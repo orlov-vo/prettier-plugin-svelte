@@ -285,6 +285,17 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                     ? ''
                     : concat(['=', '{', printJS(path, print, 'expression'), '}']),
             ]);
+        case 'Let':
+            return concat([
+                line,
+                'let:',
+                node.name,
+                // shorthand let directives have `null` expressions
+                !node.expression ||
+                (node.expression.type === 'Identifier' && node.expression.name === node.name)
+                    ? ''
+                    : concat(['=', '{', printJS(path, print, 'expression'), '}']),
+            ]);
         case 'DebugTag':
             return concat([
                 '{@debug',

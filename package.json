@@ -1,6 +1,6 @@
 {
     "name": "@orlov_vo/prettier-plugin-svelte",
-    "version": "0.4.0",
+    "version": "0.4.2",
     "description": "Svelte plugin for prettier",
     "main": "plugin.js",
     "scripts": {
