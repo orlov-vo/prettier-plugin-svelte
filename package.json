@@ -1,6 +1,6 @@
 {
     "name": "@orlov_vo/prettier-plugin-svelte",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "description": "Svelte plugin for prettier",
     "main": "plugin.js",
     "scripts": {
@@ -11,28 +11,31 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/UnwrittenFun/prettier-plugin-svelte.git"
+        "url": "git+https://github.com/orlov-vo/prettier-plugin-svelte.git"
     },
     "keywords": [
         "prettier",
         "svelte"
     ],
     "author": "James Birtles <jameshbirtles@gmail.com>",
+    "contributors": [
+        "Vladislav Orlov <me@orlov-vo.ru>"
+    ],
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/UnwrittenFun/prettier-plugin-svelte/issues"
+        "url": "https://github.com/orlov-vo/prettier-plugin-svelte/issues"
     },
-    "homepage": "https://github.com/UnwrittenFun/prettier-plugin-svelte#readme",
+    "homepage": "https://github.com/orlov-vo/prettier-plugin-svelte#readme",
     "devDependencies": {
-        "@types/node": "^11.13.7",
+        "@types/node": "^12.0.0",
         "@types/prettier": "^1.16.3",
         "ava": "1.4.1",
         "prettier": "^1.17.0",
-        "rollup": "1.10.1",
+        "rollup": "1.11.3",
         "rollup-plugin-commonjs": "9.3.4",
-        "rollup-plugin-node-resolve": "4.2.3",
+        "rollup-plugin-node-resolve": "4.2.4",
         "rollup-plugin-typescript": "1.0.1",
-        "svelte": "^3.0.0",
+        "svelte": "^3.2.2",
         "ts-node": "^8.1.0",
         "tslib": "^1.9.3",
         "typescript": "3.4.5"

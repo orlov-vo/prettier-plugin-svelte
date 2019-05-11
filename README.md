@@ -9,9 +9,21 @@ Format your svelte components using prettier.
 -   Format the javascript expressions embedded in the svelte syntax
     -   e.g. expressions inside of `{}`, event bindings `on:click=""`, and more
 
+## Different from [original](https://github.com/UnwrittenFun/prettier-plugin-svelte)
+
+This fork:
+
+-  Doesn't collapse non-closable tags like `<div></div>`
+-  Have "true" order in components: scripts, template, styles
+-  Generate valid attributes (example: `<div bind:value="{myValue}"></div>`)
+
 ## How to use
 
-Install prettier-plugin-svelte as a dev dependency in your project.
+Install `@orlov_vo/prettier-plugin-svelte` as a dev dependency in your project.
+
+```
+npm install --save-dev @orlov_vo/prettier-plugin-svelte
+```
 
 Then format your code using prettier cli. You may need to add `--plugin-search-dir=.`
 
