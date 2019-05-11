@@ -70,7 +70,10 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
             parts.push(path.call(print, 'instance'));
         }
 
-        parts.push(path.call(print, 'html'));
+        const htmlDoc = path.call(print, 'html');
+        if (htmlDoc) {
+            parts.push(htmlDoc);
+        }
 
         if (n.css) {
             n.css.type = 'Style';
@@ -78,15 +81,10 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
             parts.push(path.call(print, 'css'));
         }
 
-        const htmlDoc = path.call(print, 'html');
-        if (htmlDoc) {
-            parts.push(htmlDoc);
-        }
-
         return group(join(hardline, parts));
     }
 
-    const [open, close] = ['{', '}'];
+    const [open, close] = ['"{', '}"'];
     const node = n as Node;
     switch (node.type) {
         case 'Fragment':
@@ -190,12 +188,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
 
             const def: Doc[] = [line, node.name];
             if (node.value !== true) {
-                def.push('=');
-                const quotes = !hasLoneMustacheTag;
-
-                quotes && def.push('"');
-                def.push(...path.map(childPath => childPath.call(print), 'value'));
-                quotes && def.push('"');
+                def.push('="', ...path.map(childPath => childPath.call(print), 'value'), '"');
             }
             return concat(def);
         }
@@ -312,7 +305,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                 node.name,
                 node.expression.type === 'Identifier' && node.expression.name === node.name
                     ? ''
-                    : concat(['=', '{', printJS(path, print, 'expression'), '}']),
+                    : concat(['=', open, printJS(path, print, 'expression'), close]),
             ]);
         case 'Let':
             return concat([
@@ -323,7 +316,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                 !node.expression ||
                 (node.expression.type === 'Identifier' && node.expression.name === node.name)
                     ? ''
-                    : concat(['=', '{', printJS(path, print, 'expression'), '}']),
+                    : concat(['=', open, printJS(path, print, 'expression'), close]),
             ]);
         case 'DebugTag':
             return concat([
