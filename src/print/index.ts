@@ -152,6 +152,7 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                                       ])
                                     : '',
                                 ...path.map(childPath => childPath.call(print), 'attributes'),
+                                dedent(softline),
                             ]),
                         ),
                     ),
