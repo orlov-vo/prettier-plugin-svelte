@@ -152,12 +152,12 @@ export function print(path: FastPath, options: ParserOptions, print: PrintFn): D
                                       ])
                                     : '',
                                 ...path.map(childPath => childPath.call(print), 'attributes'),
-                                dedent(softline),
+                                dedent(isVoidElement ? line : softline),
                             ]),
                         ),
                     ),
 
-                    isVoidElement ? ' />' : '>',
+                    isVoidElement ? '/>' : '>',
 
                     notEmpty ? indent(printChildren(path, print)) : '',
 
