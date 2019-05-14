@@ -23,7 +23,17 @@ export const languages: Partial<SupportLanguage>[] = [
 export const parsers: Record<string, Parser> = {
     svelte: {
         parse: text => {
-            return require('svelte/compiler').compile(text, { generate: false }).ast;
+            try {
+                return require('svelte/compiler').compile(text, { generate: false }).ast;
+            } catch (err) {
+                err.loc = {
+                    start: err.start,
+                    end: err.end,
+                };
+                delete err.start;
+                delete err.end;
+                throw err;
+            }
         },
         preprocess: text => {
             let styles: string[] = [];
