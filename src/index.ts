@@ -1,4 +1,4 @@
-import { SupportLanguage, Parser, Printer, SupportOption } from 'prettier';
+import { SupportLanguage, Parser, Printer } from 'prettier';
 import { print } from './print';
 import { embed } from './embed';
 import { snipTagContent } from './lib/snipTagContent';
@@ -54,3 +54,5 @@ export const printers: Record<string, Printer> = {
         embed,
     },
 };
+
+export { options } from './options';
