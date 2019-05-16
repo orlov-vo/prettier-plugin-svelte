@@ -13,9 +13,9 @@ Format your svelte components using prettier.
 
 This fork:
 
--  Doesn't collapse non-closable tags like `<div></div>`
--  Have "true" order in components: scripts, template, styles
--  Generate valid attributes (example: `<div bind:value="{myValue}"></div>`)
+-   Doesn't collapse non-closable tags like `<div></div>`
+-   Generate valid attributes (example: `<div bind:value="{myValue}"></div>`)
+-   ~~Have "true" order in components: scripts, template, styles.~~ Now we have `sort-order` option with `scripts-html-css` as default value
 
 ## How to use
 
@@ -33,8 +33,8 @@ prettier --write --plugin-search-dir=. ./**/*.html
 
 ## Options
 
-**`sort-order`** Sort order for scripts, html, and css. Defaults to `scripts-css-html`.
+**`sort-order`** Sort order for scripts, html, and css. Defaults to `scripts-html-css`.
 
 ```
-prettier --write --sort-order scripts-html-css ./**/*.svelte
+prettier --write --sort-order html-scripts-css ./**/*.svelte
 ```
